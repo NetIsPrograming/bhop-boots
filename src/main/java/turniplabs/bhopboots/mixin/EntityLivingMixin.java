@@ -80,7 +80,7 @@ public class EntityLivingMixin {
             double deltaYaw = Math.toRadians(player.yRot - this.oldYaw);
             this.oldYaw = player.yRot;
 
-            if (player.noPhysics || player.onGround) {
+            if (player.noPhysics) {
                 return;
             }
 
@@ -97,6 +97,7 @@ public class EntityLivingMixin {
             float motion = 1.0f + Math.abs(this.moveStrafing) / 8.0f;
             player.xd *= motion;
             player.zd *= motion;
+            player.yd *= Math.floor(motion);
         }
     }
 
